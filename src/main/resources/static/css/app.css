@@ -37,7 +37,7 @@
 /* 替换tree的图标*/
 .tree-icon {
 	font: normal normal normal 12px/1 FontAwesome;
-	font-size: 15px !important;
+	font-size: 16px !important;
 	background: none;
 }
 
@@ -54,6 +54,7 @@
 }
 
 .tree-node {
+	padding-top: 2px;
 	margin: 3px 0;
 }
 

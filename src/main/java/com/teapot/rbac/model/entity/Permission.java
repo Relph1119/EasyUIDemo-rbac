@@ -33,7 +33,20 @@ public class Permission {
 	@Column(name="permission_key", nullable=false, length=32)
 	private String permisionKey;
 	
+	/**
+	 * 权限类型
+	 */
 	private String type;
+	
+	/**
+	 * 菜单路径
+	 */
+	private String path;
+	
+	/**
+	 * 资源
+	 */
+	private String resource;
 	
 	private Boolean enable = false;
 	
