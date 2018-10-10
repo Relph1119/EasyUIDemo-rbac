@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+.header {
+	height: 70px;
+	overflow: hidden;
+	padding-left: 20px;
+}
+
+.header .title {
+	float: left;
+}
+
+.header .info {
+	float: right;
+	height: 70px;
+	line-height: 70px;
+	margin-right: 28px;
+}
+
+.header .info a:after {
+	content: '|';
+	margin: 0 5px;
+}
+
+.header .info a:last-child:after {
+	content: '';
+	margin: 0;
+}
+
+.footer {
+	height: 30px;
+	overflow: hidden;
+	text-align: center;
+	line-height: 30px;
+}
+
+/* 替换tree的图标*/
+.tree-icon {
+	font: normal normal normal 12px/1 FontAwesome;
+	font-size: 15px !important;
+	background: none;
+}
+
+.tree-folder:before {
+	content: "\f114";
+}
+
+.tree-folder-open:before {
+	content: "\f115";
+}
+
+.tree-file:before {
+	content: "\f0f6";
+}
+
+.tree-node {
+	margin: 3px 0;
+}
+
+.panel-icon {
+	padding-top: 2px;
+	font-size: 13px;
+}
+
+.panel-tool a {
+	font: normal normal normal 18px/1 FontAwesome;
+	background: none;
+}
+
+.layout-button-left:before {
+	content: "\f100";
+}
+
+.layout-button-right:before {
+	content: "\f101";
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Spring Boot and Easyui RBAC</title>
+	
+	<link rel="stylesheet" href="easyui/themes/bootstrap/easyui.css">
+	<link rel="stylesheet" href="easyui/themes/icon.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/app.css">
+	
+	<script type="text/javascript" src="lib/jquery.min.js"></script>
+	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north'" class="header">
+		<h1 class="title" >Spring Boot and Easyui RBAC2</h1>
+		<div class="info">
+			<a>管理员</a>
+			<a>注销</a>
+		</div>
+	</div>
+	<div data-options="region:'west', iconCls:'fa fa-id-card-o'" title="导航" style="width: 150px;">
+		<ul class="easyui-tree">
+			<li>
+				<span>系统管理</span>
+				<ul>
+					<li>权限管理</li>
+					<li>角色管理</li>
+					<li>用户管理</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div data-options="region:'center'" title="控制台">
+	
+	</div>
+	<div data-options="region:'south'" class="footer" >
+		教学视频第一季
+	</div>	
+</body>
+</html>
