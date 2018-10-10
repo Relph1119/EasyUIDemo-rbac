@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<form action="" class="form">
+	<div class="form-line">
+		<label for="parent">父资源</label>
+		<input id="parent" type="text" class="easyui-combobox" data-options="editable:false">
+	</div>
+	<div class="form-line required">
+		<label for="name">资源名称</label>
+		<input id="name" name="name" type="text" class="easyui-textbox" data-options="required:true">
+	</div>
+	<div class="form-line required">
+		<label for="permissionKey">资源标识</label>
+		<input id="permissionKey" name="permissionKey" type="text" class="easyui-textbox" data-options="required:true">
+	</div>
+	<div class="form-line">
+		<label for="type">资源类型</label>
+		<select id="type" name="type" class="easyui-combobox" data-options="editable:false, panelHeight:'auto'">
+			<option value="MENU">菜单</option>
+			<option value="FUNCTION">功能</option>
+			<option value="BLOCK">区域</option>
+		</select>
+	</div>
+	<div class="form-line">
+		<label for="path">菜单路径</label>
+		<input id="path" name="path" type="text" class="easyui-textbox" >
+	</div>
+	<div class="form-line">
+		<label for="resource">资源</label>
+		<input id="resource" name="resource" type="text" class="easyui-textbox" data-options="multiline:true" >
+	</div>
+	<div class="form-line">
+		<label for="description">描述</label>
+		<input id="description" name="description" type="text" class="easyui-textbox" data-options="multiline:true">
+	</div>
+	<div class="form-line">
+		<label for="weight">权重</label>
+		<input id="weight" name="weight" type="text" class="easyui-textbox">
+	</div>
+	<div class="form-line">
+		<label for="enable">状态</label>
+		<input id="enable" name="enable" class="easyui-switchbutton" data-options="onText:'启用',offText:'禁用'">
+	</div>
+</form>
+</body>
+</html>

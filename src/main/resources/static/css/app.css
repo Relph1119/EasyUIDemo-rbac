@@ -75,3 +75,28 @@
 .layout-button-right:before {
 	content: "\f101";
 }
+
+.form .form-line{
+	margin: 10px;
+}
+
+.form .form-line label{
+	width: 80px;
+	display: inline-block;
+	text-align: right;
+	margin-left: 10px;
+}
+
+.form .form-line label:after {
+	content: "：";
+}
+
+.form .form-line input[type=text], .form .form-line input[type=password], .form .form-line select{
+	min-width: 200px;
+}
+
+.form .form-line .required :before {
+	content: "*";
+	color: red;
+}
+

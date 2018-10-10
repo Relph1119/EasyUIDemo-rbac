@@ -57,5 +57,26 @@ public class Permission {
 	@OneToMany(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="parent_id", updatable=false)
 	private List<Permission> children;
+	
+	/**
+	 * 权限类型枚举
+	 */
+	public enum Type {
+		MENU("菜单"),
+		FUNCTION("功能"),
+		BLOCK("区域");
+		
+		private String display;
+		
+		Type(String display) { this.display = display; }
+		
+		public String display() {
+			return display;
+		}
+		
+		public String toString() {
+			return this.display + "[" + this.name() + "]";
+		}
+	}
 }	
 	

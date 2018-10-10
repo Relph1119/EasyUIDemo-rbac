@@ -14,4 +14,9 @@ public class PermissionController {
 	public void index() {
 		
 	}
+	
+	@RequestMapping("/form")
+	public void form() {
+		
+	}
 }

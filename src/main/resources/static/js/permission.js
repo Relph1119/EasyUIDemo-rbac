@@ -21,9 +21,30 @@ $(function() {
 		    ]],
 		    toolbar:[{
 		    	text:"创建权限",
-		    	handle:function(){
-		    		
-		    	}
+		    	handler:formDialog
 		    }]
 		});
+		
+		/**
+		 * 表单窗口
+		 */
+		function formDialog(){
+			var dialog = $("<div/>").dialog({
+				title:'创建权限',
+				href:'/system/permission/form',
+				width:380,
+				height:450,
+				onClose:function(){
+					$(this).dialog("destroy");
+				},
+				buttons:[
+					{
+						text:'保存',
+						handler:function(){
+							
+						}
+					}
+				]
+			});
+		}
 });
