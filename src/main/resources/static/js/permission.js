@@ -2,6 +2,11 @@
  * 
  */
 $(function() {
+		var types = {
+			MENU :"菜单",
+			FUNCTION:"功能",
+			BLOCK:"区域"
+		};
 		var permissionGrid = $("#permissionGrid");
 		permissionGrid.treegrid({
 			fit:true,
@@ -11,13 +16,17 @@ $(function() {
 		    treeField:'name',
 		    columns:[[
 		        {field:'name', title:'名称',width:180},
-		        {field:'permisionKey', title:'标识',width:60,align:'right'},
-		        {field:'type', title:'类型',width:80},
-		        {field:'path', title:'路径',width:80},
-		        {field:'resource', title:'资源',width:80},
+		        {field:'permissionKey', title:'标识',width:150,align:'right'},
+		        {field:'type', title:'类型',width:80, formatter: function(val){
+		        	return types[val];
+		        }},
+		        {field:'path', title:'路径',width:200},
+		        {field:'resource', title:'资源',width:200},
 		        {field:'weight', title:'权重',width:80},
-		        {field:'description', title:'描述',width:80},
-		        {field:'enable', title:'状态',width:80}
+		        {field:'description', title:'描述',width:200},
+		        {field:'enable', title:'状态',width:80, formatter: function(val){
+		        	return val?"启用":"禁用";
+		        }}
 		    ]],
 		    toolbar:[{
 		    	text:"创建权限",
@@ -41,7 +50,17 @@ $(function() {
 					{
 						text:'保存',
 						handler:function(){
-							
+							var permissionForm = $("#permissionForm");
+							if(permissionForm.form("validate")){
+								$.post("/system/permission/save", 
+									permissionForm.serialize()
+								).success(
+									function(){
+										permissionGrid.treegrid("reload");
+										dialog.dialog('close');
+									}
+								);
+							}
 						}
 					}
 				]

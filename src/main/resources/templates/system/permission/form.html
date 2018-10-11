@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <body>
-<form action="" class="form">
+<form id="permissionForm" class="form">
+	<input type="hidden" name="id">
 	<div class="form-line">
 		<label for="parent">父资源</label>
-		<input id="parent" type="text" class="easyui-combobox" data-options="editable:false">
+		<select id="parent" name="parent" type="text" class="easyui-combotree" data-options="editable:false, url:'/system/permission/combo'"></select>
 	</div>
 	<div class="form-line required">
 		<label for="name">资源名称</label>

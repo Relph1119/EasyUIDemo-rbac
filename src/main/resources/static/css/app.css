@@ -63,19 +63,6 @@
 	font-size: 13px;
 }
 
-.panel-tool a {
-	font: normal normal normal 18px/1 FontAwesome;
-	background: none;
-}
-
-.layout-button-left:before {
-	content: "\f100";
-}
-
-.layout-button-right:before {
-	content: "\f101";
-}
-
 .form .form-line{
 	margin: 10px;
 }

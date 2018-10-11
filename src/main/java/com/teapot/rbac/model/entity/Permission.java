@@ -13,6 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.boot.SpringApplication;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Entity
@@ -25,13 +30,14 @@ public class Permission {
 	private Long id;
 	
 	@ManyToOne
+	@JsonIgnore
 	private Permission parent;
 	
 	@Column(nullable=false)
 	private String name;
 	
 	@Column(name="permission_key", nullable=false, length=32)
-	private String permisionKey;
+	private String permissionKey;
 	
 	/**
 	 * 权限类型
@@ -52,11 +58,16 @@ public class Permission {
 	
 	private String description;
 	
-	private Integer wieght = 0;
+	private Integer weight = 0;
 	
 	@OneToMany(cascade=CascadeType.REMOVE)
 	@JoinColumn(name="parent_id", updatable=false)
 	private List<Permission> children;
+	
+	@JsonProperty("text")
+	public String getText() {
+		return this.name;
+	}
 	
 	/**
 	 * 权限类型枚举
