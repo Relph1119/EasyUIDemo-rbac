@@ -22,4 +22,5 @@ public interface PermissionDao extends CrudRepository<Permission, Long>{
 	 * @return
 	 */
 	List<Permission> findAllByParent(Permission parent);
+
 }

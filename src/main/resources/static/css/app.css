@@ -63,6 +63,10 @@
 	font-size: 13px;
 }
 
+.l-btn-icon.fa {
+  font-size: 16px;
+}
+
 .form .form-line{
 	margin: 10px;
 }
@@ -82,8 +86,30 @@
 	min-width: 200px;
 }
 
-.form .form-line .required :before {
+.form .form-line.required label:before {
 	content: "*";
 	color: red;
+}
+
+a.action{
+	cursor: pointer;
+}
+
+a.action:before{
+	padding-right: 2px; 
+}
+
+a.action:after {
+	content:"|";
+	margin: 0 5px;
+}
+
+a.action:last-child:after {
+	content: "";
+	margin: 0;
+}
+
+a.action:hover {
+	color: #ff6600;
 }
 

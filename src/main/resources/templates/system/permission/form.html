@@ -3,22 +3,22 @@
 
 <body>
 <form id="permissionForm" class="form">
-	<input type="hidden" name="id">
+	<input type="hidden" name="id" th:value="${permission?.id}">
 	<div class="form-line">
 		<label for="parent">父资源</label>
-		<select id="parent" name="parent" type="text" class="easyui-combotree" data-options="editable:false, url:'/system/permission/combo'"></select>
+		<select id="parent" name="parent" class="easyui-combotree" th:data-options="'editable:false,url:\'/system/permission/combo\',value:'+${permission?.parent?.id}"></select>
 	</div>
 	<div class="form-line required">
 		<label for="name">资源名称</label>
-		<input id="name" name="name" type="text" class="easyui-textbox" data-options="required:true">
+		<input id="name" name="name" type="text" class="easyui-textbox" data-options="required:true" th:value="${permission?.name}" >
 	</div>
 	<div class="form-line required">
 		<label for="permissionKey">资源标识</label>
-		<input id="permissionKey" name="permissionKey" type="text" class="easyui-textbox" data-options="required:true">
+		<input id="permissionKey" name="permissionKey" type="text" class="easyui-textbox" data-options="required:true" th:value="${permission?.permissionKey}">
 	</div>
 	<div class="form-line">
 		<label for="type">资源类型</label>
-		<select id="type" name="type" class="easyui-combobox" data-options="editable:false, panelHeight:'auto'">
+		<select id="type" name="type" class="easyui-combobox" th:data-options="'editable:false,panelHeight:\'auto\',value:\''+${permission?.type==null?'MENU':permission?.type?.name()}+'\''">
 			<option value="MENU">菜单</option>
 			<option value="FUNCTION">功能</option>
 			<option value="BLOCK">区域</option>
@@ -26,23 +26,23 @@
 	</div>
 	<div class="form-line">
 		<label for="path">菜单路径</label>
-		<input id="path" name="path" type="text" class="easyui-textbox" >
+		<input id="path" name="path" type="text" class="easyui-textbox" th:value="${permission?.path}">
 	</div>
 	<div class="form-line">
 		<label for="resource">资源</label>
-		<input id="resource" name="resource" type="text" class="easyui-textbox" data-options="multiline:true" >
+		<input id="resource" name="resource" type="text" class="easyui-textbox" data-options="multiline:true" th:value="${permission?.resource}">
 	</div>
 	<div class="form-line">
 		<label for="description">描述</label>
-		<input id="description" name="description" type="text" class="easyui-textbox" data-options="multiline:true">
+		<input id="description" name="description" type="text" class="easyui-textbox" data-options="multiline:true" th:value="${permission?.description}">
 	</div>
 	<div class="form-line">
 		<label for="weight">权重</label>
-		<input id="weight" name="weight" type="text" class="easyui-textbox">
+		<input id="weight" name="weight" type="text" class="easyui-textbox" th:value="${permission?.weight}">
 	</div>
 	<div class="form-line">
 		<label for="enable">状态</label>
-		<input id="enable" name="enable" class="easyui-switchbutton" data-options="onText:'启用',offText:'禁用'">
+		<input id="enable" name="enable" class="easyui-switchbutton" th:data-options="'onText:\'启用\',offText:\'禁用\',value:\'1\',checked:'+${permission?.enable==null || permission?.enable?'true':'false'}">
 	</div>
 </form>
 </body>

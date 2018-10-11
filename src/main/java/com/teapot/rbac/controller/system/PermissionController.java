@@ -7,7 +7,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,9 +34,14 @@ public class PermissionController {
 		
 	}
 	
-	@RequestMapping("/form")
-	public void form() {
-		
+	@RequestMapping({"/form", "/load"})
+	public String form(Long id, Model model) {
+		if (id != null) {
+			//编辑
+			Permission permission = permissionDao.findById(id).get();
+			model.addAttribute("permission", permission);
+		}
+		return "/system/permission/form";
 	}
 	
 	@PostMapping("/list")
@@ -53,7 +60,7 @@ public class PermissionController {
 		return roots;
 	}
 	
-	@RequestMapping("/save")
+	@RequestMapping({"/save", "/update"})
 	@ResponseBody
 	@Transactional
 	public JsonResult form(@Valid Permission permission, BindingResult br) {
@@ -63,6 +70,18 @@ public class PermissionController {
 		} else {
 			return JsonResult.error("校验不通过！");
 		}
+	}
+	
+	@GetMapping("/delete")
+	@ResponseBody
+	@Transactional
+	public JsonResult delete(Long id) {
+		if(permissionDao.existsById(id)){
+			permissionDao.deleteById(id);
+            return JsonResult.success();
+		}
+		return JsonResult.error("数据不存在！");
+        
 	}
 	
 	/**
