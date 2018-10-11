@@ -1,3 +1,14 @@
-<table id="roleGrid"></table>
+<div class="easyui-layout" data-options="fit:true">
+	<div data-options="region:'center'">
+		<table id="roleGrid"></table>
+	</div>
+	<div id="rolePermissionPanel" data-options="region:'east',collapsible:false,tools:'#rolePermissionTools'" style="width: 200px" title="请选择角色">
+		<ul id="rolePermissionTree"></ul>
+	</div>
+</div>
+<div id="rolePermissionTools">
+	<a id="rolePermissionSave" class="fa fa-save"></a>
+</div>
+
 
 <script src="js/role.js"></script>
