@@ -2,27 +2,15 @@
  * 
  */
 $(function() {
-	var types = {
-		MENU :"菜单",
-		FUNCTION:"功能",
-		BLOCK:"区域"
-	};
-	var permissionGrid = $("#permissionGrid");
-	permissionGrid.treegrid({
+	var roleGrid = $("#roleGrid");
+	roleGrid.datagrid({
 		fit:true,
 		border:false,
-		url:'/system/permission/list',
-		idField:'id',
-	    treeField:'name',
+		url:'/system/role/list',
 	    columns:[[
-	        {field:'name', title:'名称',width:180},
-	        {field:'permissionKey', title:'标识',width:150},
-	        {field:'type', title:'类型',width:80, align:'center', formatter: function(val){
-	        	return types[val];
-	        }},
-	        {field:'path', title:'路径',width:200},
-	        {field:'resource', title:'资源',width:200},
-	        {field:'weight', title:'权重',width:80, align:'center'},
+	        {field:'id', checkbox:true},
+	        {field:'roleName', title:'名称',width:180},
+	        {field:'roleKey', title:'标识',width:150},
 	        {field:'description', title:'描述',width:200},
 	        {
 	        	field:'enable', title:'状态',width:80, align:'center', formatter: function(val){
@@ -40,14 +28,14 @@ $(function() {
 	    ]],
 	    toolbar:[{
 	    	iconCls : 'fa fa-plus',
-	    	text:"创建权限",
+	    	text:"创建角色",
 	    	handler:function(){
 	    		formDialog();
 	    	}
 	    }]
 	});
 	
-	var gridPanel = permissionGrid.treegrid("getPanel");
+	var gridPanel = roleGrid.treegrid("getPanel");
 	
 	//给操作按钮绑定事件
 	gridPanel.on("click", "a.edit", function(){
@@ -58,10 +46,10 @@ $(function() {
 		var id = this.dataset.id;
 		$.messager.confirm("提示", "是否删除", function(r){
 			if(r){
-				$.get("/system/permission/delete?id=" +id).success(
+				$.get("/system/role/delete?id=" +id).success(
 					function(){
 						//删除成功
-						permissionGrid.treegrid("reload");
+						roleGrid.datagrid("reload");
 					}
 				);
 			}
@@ -74,10 +62,10 @@ $(function() {
 	function formDialog(id){
 		var dialog = $("<div/>").dialog({
 			iconCls:'fa fa-plus',
-			title:(id ? '编辑':'创建') + '权限',
-			href:'/system/permission/' + (id ? 'load?id=' + id:'form'),
+			title:(id ? '编辑':'创建') + '角色',
+			href:'/system/role/' + (id ? 'load?id=' + id:'form'),
 			width:380,
-			height:450,
+			height:250,
 			onClose:function(){
 				$(this).dialog("destroy");
 			},
@@ -85,13 +73,13 @@ $(function() {
 				{
 					text:'保存',
 					handler:function(){
-						var permissionForm = $("#permissionForm");
-						if(permissionForm.form("validate")){
-							$.post("/system/permission/" + (id ? 'update':'save'), 
-								permissionForm.serialize()
+						var roleForm = $("#roleForm");
+						if(roleForm.form("validate")){
+							$.post("/system/role/" + (id ? 'update':'save'), 
+								roleForm.serialize()
 							).success(
 								function(){
-									permissionGrid.treegrid("reload");
+									roleGrid.datagrid("reload");
 									dialog.dialog('close');
 								}
 							);

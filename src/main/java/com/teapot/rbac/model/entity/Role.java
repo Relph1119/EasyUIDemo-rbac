@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -39,5 +41,7 @@ public class Role {
 			joinColumns=@JoinColumn(name="role_id"),
 			inverseJoinColumns = @JoinColumn(name="permission_id")
 	)
+	
+	@JsonIgnore
 	private Set<Permission> permissions;
 }
