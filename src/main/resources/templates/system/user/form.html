@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<form id="userForm" class="form">
+	<input type="hidden" name="id" th:value="${user?.id}">
+	<div class="form-line required">
+		<label for="account">帐号</label>
+		<input id="account" name="account" type="text" class="easyui-textbox" data-options="required:true" th:value="${user?.account}" >
+	</div>
+	<div class="form-line required">
+		<label for="password">密码</label>
+		<input id="password" name="password" type="text" class="easyui-passwordbox" th:data-options="'required:'+ ${user==null?'true':'false'}">
+	</div>
+	<div class="form-line required">
+		<label for="userName">用户名</label>
+		<input id="userName" name="userName" type="text" class="easyui-textbox" data-options="required:true" th:value="${user?.userName}" >
+	</div>
+	<div class="form-line">
+		<label for="tel">电话</label>
+		<input id="tel" name="tel" type="text" class="easyui-textbox" data-options="multiline:true" th:value="${user?.tel}">
+	</div>
+	<div class="form-line">
+		<label for="enable">状态</label>
+		<input id="enable" name="enable" class="easyui-switchbutton" th:data-options="'onText:\'启用\',offText:\'禁用\',value:\'1\',checked:'+${user?.enable==null || user?.enable?'true':'false'}">
+	</div>
+</form>
+</body>
+</html>
