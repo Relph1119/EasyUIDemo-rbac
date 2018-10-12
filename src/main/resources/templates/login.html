@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Spring Boot and Easyui RBAC</title>
+<link rel="stylesheet" href="easyui/themes/bootstrap/easyui.css">
+<link rel="stylesheet" href="easyui/themes/icon.css">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+<script type="text/javascript" src="lib/jquery.min.js"></script>
+<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#loginBtn").on("click", function(){
+			var loginform = $("loginform");
+			if(loginform.form("validate")){
+				loginform.submit();
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="easyui-dialog" style="height: 200px;width: 450px" 
+		title="RBAC登录" data-options="draggable:false,closable:false">
+		<form id="loginform" method="post" action="login">
+			<div style="margin: 20px 100px;">
+				<input required="required" class="easyui-textbox" type="text" name="account" label="帐号" labelWidth="50" style="width: 200px">
+			</div>
+			<div style="margin: 20px 100px;">
+				<input required="required" class="easyui-passwordbox" type="text" name="password" label="密码" labelWidth="50" style="width: 200px">
+			</div>
+			<div style="text-align: center;">
+				<button id="loginBtn" iconCls="fa fa-sign-in" class="easyui-linkbutton">登录</button>
+			</div>
+			<div style="text-align: center;padding: 5px; color: red;" th:if="${error!=null}" th:text="${error}"></div>
+		</form>
+	</div>
+</body>
+</html>

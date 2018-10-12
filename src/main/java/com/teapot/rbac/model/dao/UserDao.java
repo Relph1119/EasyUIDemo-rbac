@@ -9,5 +9,12 @@ import com.teapot.rbac.model.entity.User;
 public interface UserDao extends PagingAndSortingRepository<User, Long>{
 
 	int countByAccount(String account);
+
+	/**
+	 * 根据帐号查用户信息
+	 * @param account
+	 * @return
+	 */
+	User findFirstByAccount(String account);
 	
 }

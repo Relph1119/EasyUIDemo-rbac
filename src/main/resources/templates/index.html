@@ -30,8 +30,8 @@
 	<div data-options="region:'north'" class="header">
 		<h1 class="title" >Spring Boot and Easyui RBAC2</h1>
 		<div class="info">
-			<a>管理员</a>
-			<a>注销</a>
+			<a th:text="${session.user.userName}">管理员</a>
+			<a href="logout">注销</a>
 		</div>
 	</div>
 	<div data-options="region:'west', iconCls:'fa fa-id-card-o'" title="导航" style="width: 150px;">
