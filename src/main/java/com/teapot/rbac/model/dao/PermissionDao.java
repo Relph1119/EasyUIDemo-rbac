@@ -1,6 +1,7 @@
 package com.teapot.rbac.model.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -22,5 +23,7 @@ public interface PermissionDao extends CrudRepository<Permission, Long>{
 	 * @return
 	 */
 	List<Permission> findAllByParent(Permission parent);
+
+	Set<Permission> findAllByEnableOrderByWeightDesc(boolean b);
 
 }
