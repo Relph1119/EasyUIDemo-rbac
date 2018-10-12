@@ -24,4 +24,14 @@ lombok: 1.16.22<br/>
 ### 数据库 ###
 MySQL
 
-### 项目截图 ###
+## 项目截图 ##
+![登录页面](https://i.imgur.com/wRvo9HA.png)
+
+![权限管理](https://i.imgur.com/8GfTVuJ.png)
+
+![角色管理](https://i.imgur.com/uiciMLm.png)
+
+![用户管理](https://i.imgur.com/1Hd0WV3.png)
+
+![编辑权限](https://i.imgur.com/6sn8S7H.png)
+

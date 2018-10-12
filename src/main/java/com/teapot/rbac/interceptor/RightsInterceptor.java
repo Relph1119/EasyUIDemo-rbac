@@ -28,7 +28,7 @@ public class RightsInterceptor implements HandlerInterceptor{
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		
-		if(user.getId() != superId) {
+		if(user != null && user.getId() != superId) {
 			Set<String> urls = (Set<String>) session.getAttribute("urls");
 			String path = request.getServletPath();
 			for (String url : urls) {
