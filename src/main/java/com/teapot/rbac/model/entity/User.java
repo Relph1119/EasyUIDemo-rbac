@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -27,6 +29,7 @@ public class User {
 	private String account;
 	
 	@Column(nullable=false, length=128)
+	@JsonIgnore
 	private String password;
 	
 	@Column(name="user_name", length=32)

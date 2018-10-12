@@ -10,10 +10,20 @@ $(function() {
 		singleSelect: true,
 		url:'/system/user/list',
 		pagination:true,
+		rownumbers:true,
 	    columns:[[
 	        {field:'account', title:'帐号',width:180},
 	        {field:'userName', title:'姓名',width:150},
 	        {field:'tel', title:'电话',width:200},
+	        {
+	        	field:'roles', title:'角色',width:200, formatter: function(val){
+	        		var roles = [];
+	        		$.each(val, function(){
+	        			roles.push(this.roleName);
+	        		});
+	        		return roles.join(",");
+	        	}	
+	        },
 	        {
 	        	field:'enable', title:'状态',width:80, align:'center', formatter: function(val){
 	        		return val?"可用":"禁用";
@@ -67,7 +77,8 @@ $(function() {
 			title:(id ? '编辑':'创建') + '用户',
 			href:'/system/user/' + (id ? 'load?id=' + id:'form'),
 			width:380,
-			height:270,
+			height:330,
+			modal:true,
 			onClose:function(){
 				$(this).dialog("destroy");
 			},

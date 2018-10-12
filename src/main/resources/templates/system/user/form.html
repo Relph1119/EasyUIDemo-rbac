@@ -6,7 +6,9 @@
 	<input type="hidden" name="id" th:value="${user?.id}">
 	<div class="form-line required">
 		<label for="account">帐号</label>
-		<input id="account" name="account" type="text" class="easyui-textbox" data-options="required:true" th:value="${user?.account}" >
+		<input th:if="${user != null}" readonly="true" name="account" type="text" class="easyui-textbox" th:value="${user?.account}">
+		<input th:if="${user == null}" id="account" name="account" type="text" class="easyui-textbox" data-options="required:true" 
+		validType="remote['system/user/check', 'account']">
 	</div>
 	<div class="form-line required">
 		<label for="password">密码</label>
@@ -19,6 +21,12 @@
 	<div class="form-line">
 		<label for="tel">电话</label>
 		<input id="tel" name="tel" type="text" class="easyui-textbox" data-options="multiline:true" th:value="${user?.tel}">
+	</div>
+	<div class="form-line">
+		<label for="roles">角色</label>
+		<select id="roles" name="roles" type="text" class="easyui-combobox" editable="false" panelHeight="auto" multiple="true">
+			<option th:each="role:${roles}" th:value="${role.id}" th:text="${role.roleName}"></option>
+		</select>
 	</div>
 	<div class="form-line">
 		<label for="enable">状态</label>

@@ -7,5 +7,7 @@ import com.teapot.rbac.model.entity.User;
 
 @Repository
 public interface UserDao extends PagingAndSortingRepository<User, Long>{
+
+	int countByAccount(String account);
 	
 }
