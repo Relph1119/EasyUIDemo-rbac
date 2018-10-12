@@ -1,2 +1,9 @@
 <table id="userGrid"></table>
+<div id="userGridAction" style="display: none;" xmlns:th="http://www.thymeleaf.org">
+<a th:if="${#lists.contains(session.keys, 'system:user:edit')}" class="actions fa fa-pencil-square-o edit">编辑</a>
+<a th:if="${#lists.contains(session.keys, 'system:user:delete')}" class="actions fa fa-trash-o delete">删除</a>
+</div>
+<div id="userGridToolbar" style="display: none;" xmlns:th="http://www.thymeleaf.org">
+<a th:if="${#lists.contains(session.keys, 'system:user:create')}" class="easyui-linkbutton actions create" iconCls="fa fa-plus" plain="true">创建用户</a>
+</div>
 <script src="js/user.js"></script>

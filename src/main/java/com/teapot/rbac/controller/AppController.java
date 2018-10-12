@@ -2,6 +2,7 @@ package com.teapot.rbac.controller;
 
 import java.security.Permissions;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -81,14 +82,20 @@ public class AppController {
 				//存储权限key
 				Set<String> keys = new HashSet<>();
 				
+				//所有有权限访问的请求
+				Set<String> urls = new HashSet<>();
+				
 				permissions.forEach(permission -> {
 					if(permission.getEnable()) {
 						if(permission.getType().equals(Permission.Type.MENU)) {
 							//是菜单
 							menus.add(permission);
+							urls.add(permission.getPath());
 						}
 						//获取用户拥有的权限
 						keys.add(permission.getPermissionKey());
+						
+						urls.addAll(Arrays.asList(permission.getResource().split(",")));
 					}
 				});
 				
@@ -106,6 +113,8 @@ public class AppController {
 				session.setAttribute("user", user);
 				session.setAttribute("menus", menuList);
 				session.setAttribute("keys", keys);
+				session.setAttribute("urls", urls);
+				
 				
 			} else {
 				rda.addFlashAttribute("error", "帐号和密码不匹配!");
@@ -126,5 +135,10 @@ public class AppController {
 	@ResponseBody
 	public List<Menu> menus(@SessionAttribute("menus") List<Menu> menuList) {
 		return menuList;
+	}
+	
+	@RequestMapping("/reject")
+	public String reject() {
+		return "reject";
 	}
 }

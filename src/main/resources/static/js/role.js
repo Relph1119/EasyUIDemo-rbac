@@ -22,10 +22,10 @@ $(function() {
 	        	}	
 	        },
 	        {
-	        	field:'edit', title:'操作',width:100, align:'center' ,formatter: function(val, row){
+	        	field:'edit', title:'操作',width:120, align:'center' ,formatter: function(val, row){
 	        		var btns = [];
-	        		btns.push('<a data-id="'+ row.id +'" class="action fa fa-pencil-square-o edit">编辑</a>');
-	        		btns.push('<a data-id="'+ row.id +'" class="action fa fa-trash-o delete">删除</a>');
+	        		btns.push('<a data-id="'+ row.id +'" class="actions fa fa-pencil-square-o edit">编辑</a>');
+	        		btns.push('<a data-id="'+ row.id +'" class="actions fa fa-trash-o delete">删除</a>');
 	        		return btns.join("");
 	        	}	
 	        }

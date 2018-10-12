@@ -4,6 +4,8 @@
 $(function() {
 	var userGrid = $("#userGrid");
 	
+	var userGridAction = $("#userGridAction");
+	
 	userGrid.datagrid({
 		fit:true,
 		border:false,
@@ -30,21 +32,12 @@ $(function() {
 	        	}	
 	        },
 	        {
-	        	field:'edit', title:'操作',width:100, align:'center' ,formatter: function(val, row){
-	        		var btns = [];
-	        		btns.push('<a data-id="'+ row.id +'" class="action fa fa-pencil-square-o edit">编辑</a>');
-	        		btns.push('<a data-id="'+ row.id +'" class="action fa fa-trash-o delete">删除</a>');
-	        		return btns.join("");
+	        	field:'edit', title:'操作',width:120, align:'center' ,formatter: function(val, row){
+	        		return userGridAction.children("a.actions").attr("data-id", row.id).end().html();
 	        	}	
 	        }
 	    ]],
-	    toolbar:[{
-	    	iconCls : 'fa fa-plus',
-	    	text:"创建用户",
-	    	handler:function(){
-	    		formDialog();
-	    	}
-	    }]
+	    toolbar:"#userGridToolbar"
 	});
 	
 	var gridPanel = userGrid.treegrid("getPanel");
@@ -53,8 +46,7 @@ $(function() {
 	gridPanel.on("click", "a.edit", function(){
 		var id = this.dataset.id;
 		formDialog(id);
-	});
-	gridPanel.on("click", "a.delete", function(){
+	}).on("click", "a.delete", function(){
 		var id = this.dataset.id;
 		$.messager.confirm("提示", "是否删除", function(r){
 			if(r){
@@ -66,6 +58,8 @@ $(function() {
 				);
 			}
 		})
+	}).on("click", "a.create",function(){
+		formDialog();
 	});
 	
 	/**

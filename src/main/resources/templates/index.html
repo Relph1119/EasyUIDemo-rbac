@@ -53,11 +53,25 @@
 			var center = $("body").layout("panel", "center");
 			menuTree.tree({
 				url:"menus",
-				parentFiled:"parentId",
+				parentField:"parentId",
 				onSelect:function(node){
 					center.panel("refresh", node.href).panel('setTitle', node.text);
 				}
 			});
+			
+			$.ajaxSetup({
+		        statusCode: {
+		          403: function (resp) {
+		            console.log(arguments)
+		            $.messager.alert("系统提示", "访问被拒绝！[" + resp.responseJSON.path + "]");
+		          },
+		          401: function () {
+		            $.messager.alert("系统提示", "登录超时!！", "info", function () {
+		              location.replace("/");
+		            });
+		          }
+		        }
+		    });
 		});
 		
 	</script>

@@ -14,8 +14,12 @@ public class LoginInterceptor implements HandlerInterceptor{
 		HttpSession session = request.getSession();
 		//判断session中是否有用户信息
 		if(session.getAttribute("user") == null) {
-			response.sendRedirect("/");
-			return false;
+			if ("XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With"))) {
+                //ajax请求
+                response.sendError(401);
+            } else {
+                response.sendRedirect("/");
+            }
 		}
 		return true;
 	}

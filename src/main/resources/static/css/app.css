@@ -91,25 +91,25 @@
 	color: red;
 }
 
-a.action{
+a.actions{
 	cursor: pointer;
 }
 
-a.action:before{
+a.actions:before{
 	padding-right: 2px; 
 }
 
-a.action:after {
+a.actions:after {
 	content:"|";
 	margin: 0 5px;
 }
 
-a.action:last-child:after {
+a.actions:last-child:after {
 	content: "";
 	margin: 0;
 }
 
-a.action:hover {
+a.actions:hover {
 	color: #ff6600;
 }
 
